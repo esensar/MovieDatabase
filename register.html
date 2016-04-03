@@ -3,6 +3,7 @@
   <HEAD>
     <meta http-equiv="content-type" content="text/html" charset="utf-8">
     <link rel="stylesheet" type="text/css" href="stil.css" />
+    <script type="text/javascript" src="js.js"></script>
     <TITLE>
       Movie Database
     </TITLE>
@@ -44,12 +45,12 @@
           </a>
         </li>
         <li class="headerItem">
-          <a id="activeHeaderLink" class="headerLink" href="contact.html">
+          <a class="headerLink" href="contact.html">
               Contact
           </a>
         </li>
         <li class="headerItem">
-          <a class="headerLink" href="register.html">
+          <a id="activeHeaderLink" class="headerLink" href="register.html">
               Register
           </a>
         </li>
@@ -58,22 +59,18 @@
     <div class="content">
       <div class="contactForm">
         <label >
-          First name:
-        </label><br />
-        <input type="text" name="firstName" /> <br />
-        <label >
-          Last name:
-        </label><br />
-        <input type="text" name="lastName" /><br />
-        <label >
           Email:
         </label><br />
-        <input type="text" name="lastName" /><br />
+        <input type="text" id="emailField" name="email" oninput="validateEmail(this)"/> <br />
         <label >
-          Message:
+          Password:
         </label><br />
-        <input type="text" name="message" height="300px"/><br />
-        <input type="button" name="send" value="Send"/>
+        <input type="text" id="passwordField" name="password" oninput="validatePassword(this)" /><br />
+        <label >
+          Confirm:
+        </label><br />
+        <input type="text" id="confirmField" name="confirm" oninput="validateConfirm(this)" /><br />
+        <input type="button" name="submit" value="Submit" />
       </div>
     </div>
   </BODY>

@@ -179,3 +179,10 @@ p {
   display: inline-block;
   margin: 5px;
 }
+
+time {
+    font-family: sans-serif;
+    color: gray;
+    font-size: 10px;
+    display: block;
+}
