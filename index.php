@@ -17,7 +17,6 @@
       }
       if(isset($_POST['sort'])) {
         if($_POST['sort']=='alpha') {
-          print_r('alpha');
           array_multisort($newsArray, SORT_STRING, $imagesArray, $timesArray);
         }
       }
