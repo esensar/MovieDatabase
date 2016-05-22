@@ -13,7 +13,7 @@
   }
 
   if(isset($_POST['vijest'])) {
-    $vijestiFile = file_get_contents("vijesti.csv");
+    $vijestiFile = file_get_contents($openShiftFolder."vijesti.csv");
     $vijest = $_POST['vijest'];
     if(strpos($vijest, ',') !== FALSE) {
       $vijest = str_replace('"', '""', $vijest);
@@ -31,14 +31,14 @@
     $time = date(DATE_ISO8601, strtotime("now"));
     $vijestiFile = $time.','.$slike.','.$vijest."\n".$vijestiFile;
     $vijestiFile = strip_tags($vijestiFile);
-    file_put_contents("vijesti.csv", $vijestiFile);
+    file_put_contents($openShiftFolder."vijesti.csv", $vijestiFile);
   }
 
   if(isset($_POST['logout'])) {
     unset($_SESSION['user']);
   }
 
-  if($_SERVER['REQUEST_URI'] == "/add.php" && !isset($_SESSION['user'])) {
+  if(($_SERVER['REQUEST_URI'] == "/add.php" && !isset($_SESSION['user'])) || ($_SERVER['REQUEST_URI'] == "/register.php" && isset($_SESSION['user']))) {
     header('Location: index.php');
   }
 ?>
