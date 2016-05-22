@@ -6,7 +6,7 @@
     Movie Database
   </TITLE>
 </HEAD>
-<BODY <?php echo ($_SERVER['REQUEST_URI'] == "/index.php") ? ' onload="onLoad()"' : null?>>
+<BODY <?php echo ($_SERVER['REQUEST_URI'] == "/index.php" || $_SERVER['REQUEST_URI'] == "") ? ' onload="onLoad()"' : null?>>
 <div class="top">
   <a class="logoLink" href="index.php">
     <div class="fullLogo">
@@ -42,7 +42,7 @@
 
   <ul class="headerBar">
     <li class="headerItem">
-      <a <?php echo ($_SERVER['REQUEST_URI'] == "/index.php") ? 'id="activeHeaderLink"' : null?> class="headerLink" href="index.php">
+      <a <?php echo ($_SERVER['REQUEST_URI'] == "/index.php" || $_SERVER['REQUEST_URI'] == "") ? 'id="activeHeaderLink"' : null?> class="headerLink" href="index.php">
           Home
       </a>
     </li>
@@ -75,7 +75,7 @@
       </li>
     <?php endif;?>
 
-    <?php if($_SERVER['REQUEST_URI'] == "/index.php"): ?>
+    <?php if($_SERVER['REQUEST_URI'] == "/index.php" || $_SERVER['REQUEST_URI'] == ""): ?>
     <li class="headerItem">
       <select id="filter" name="filter" onchange="onFilter(this.value)">
         <option value="all">Sve novosti</option>
