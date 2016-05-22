@@ -89,6 +89,43 @@ function onFilter(select) {
   }
 }
 
+function validateCountry(countryCodeField) {
+  var ajax = new XMLHttpRequest();
+  ajax.onreadystatechange = function() {
+    if(ajax.readyState == 4 && ajax.status == 200) {
+      var nekiResponseObjekatNesto = JSON.parse(ajax.response);
+      var nizko = [];
+      for(var i = 0; i < nekiResponseObjekatNesto.length; i++) {
+        nizko.push(nekiResponseObjekatNesto[i].callingCodes);
+      }
+      document.getElementById("brtel").data = nizko;
+      validatePhone(document.getElementById("brtel"));
+    } else if (ajax.readyState == 4) {
+      document.getElementById("brtel").style.backgroundColor = "red";
+      document.getElementById("input").disabled = true;
+    }
+  }
+  ajax.open("GET", "https://restcountries.eu/rest/v1/alpha?codes=" + countryCodeField.value, true);
+  ajax.send();
+}
+
+function validatePhone(phoneField) {
+  var nizko = phoneField.data;
+  console.log(nizko);
+  if(!nizko) return;
+  for(var i = 0; i < nizko.length; i++) {
+    console.log(phoneField.value.indexOf(nizko[i]));
+    var index = phoneField.value.indexOf(nizko[i]);
+    if(index == 0 || index == 1) {
+        phoneField.style.backgroundColor = "white";
+        document.getElementById("input").disabled = false;
+        return;
+    }
+  }
+  phoneField.style.backgroundColor = "red";
+  document.getElementById("input").disabled = true;
+}
+
 function validateEmail(emailField) {
   var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if(re.test(emailField.value)) {
