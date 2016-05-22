@@ -89,6 +89,10 @@ function onFilter(select) {
   }
 }
 
+function onSortChanged(thisThing) {
+  thisThing.parentElement.submit();
+}
+
 function validateCountry(countryCodeField) {
   var ajax = new XMLHttpRequest();
   ajax.onreadystatechange = function() {

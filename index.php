@@ -4,13 +4,30 @@
     <?php include 'header.php'; ?>
     <div class="content">
       <?php $newsFile = file($openShiftFolder."vijesti.csv");
-      foreach ($newsFile as $news) {?>
+      $imagesArray = [];
+      $newsArray = [];
+      $timesArray = [];
+      $counter = 0;
+      foreach ($newsFile as $news) {
+        $nesto = str_getcsv($news);
+        $timesArray[$counter] = $nesto[0];
+        $imagesArray[$counter] = $nesto[1];
+        $newsArray[$counter] = $nesto[2];
+        $counter++;
+      }
+      if(isset($_POST['sort'])) {
+        if($_POST['sort']=='alpha') {
+          print_r('alpha');
+          array_multisort($newsArray, SORT_STRING, $imagesArray, $timesArray);
+        }
+      }
+      for($i = 0; $i < $counter; $i++) {
+      ?>
         <div class="news">
         <?php
-        $nesto = str_getcsv($news);
-        $image = $nesto[1];
-        $timeOfNews = $nesto[0];
-        $newsContent = $nesto[2];
+        $image = $imagesArray[$i];
+        $timeOfNews = $timesArray[$i];
+        $newsContent = $newsArray[$i];
         ?>
         <img src="<?php echo (strlen($image)!=0)?$image:'no_image.png' ?>"/>
         <p>
