@@ -27,7 +27,6 @@
       }
     }
 
-    print_r($slike);
     $time = date(DATE_ISO8601, strtotime("now"));
     $vijestiFile = $time.','.$slike.','.$vijest."\n".$vijestiFile;
     $vijestiFile = strip_tags($vijestiFile);

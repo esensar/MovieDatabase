@@ -84,6 +84,12 @@
         <option value="monthly">Novosti ovaj mjesec</option>
       </select>
     </li>
+    <li class="headerItem">
+      <select id="sort" name="sort" onchange="onSort(this.value)">>
+        <option value="date">Sortiraj po datumu</option>
+        <option value="alpha">Sortiraj abecedno</option>
+      </select>
+    </li>
   <?php endif; ?>
   </ul>
 </div>

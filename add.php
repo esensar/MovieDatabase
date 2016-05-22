@@ -9,10 +9,18 @@
         </label><br />
         <input type="text" id="emailField" name="slika"/> <br />
         <label >
+          Country code:
+        </label><br />
+        <input type="text" id="ccode" name="countryCode" onblur="validateCountry(this)"/> <br />
+        <label >
+          Broj telefona:
+        </label><br />
+        <input type="text" id="brtel" name="phoneNumber" onblur="validatePhone(this)"/> <br />
+        <label >
           Tekst:
         </label><br />
         <textarea type="text" rows="30" cols="70" id="passwordField" name="vijest" ></textarea><br />
-        <input type="submit" name="submit" value="Submit" />
+        <input id="input" type="submit" disabled="true" name="submit" value="Submit" />
       </form>
     </div>
   </BODY>
