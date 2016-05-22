@@ -85,10 +85,12 @@
       </select>
     </li>
     <li class="headerItem">
-      <select id="sort" name="sort" onchange="onSort(this.value)">>
-        <option value="date">Sortiraj po datumu</option>
-        <option value="alpha">Sortiraj abecedno</option>
-      </select>
+      <form method="post">
+        <select id="sort" name="sort" onchange="onSortChanged(this)">>
+          <option value="date" <?php echo (!isset($_POST['sort']) || strpos("date", $_POST['sort'])!==FALSE)?"selected":null?>>Sortiraj po datumu</option>
+          <option value="alpha" <?php echo (isset($_POST['sort']) && strpos("alpha", $_POST['sort'])!==FALSE)?"selected":null?>>Sortiraj abecedno</option>
+        </select>
+      </form>
     </li>
   <?php endif; ?>
   </ul>
