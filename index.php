@@ -3,7 +3,7 @@
 <HTML>
     <?php include 'header.php'; ?>
     <div class="content">
-      <?php $newsFile = file("vijesti.csv");
+      <?php $newsFile = file($openShiftFolder."vijesti.csv");
       foreach ($newsFile as $news) {?>
         <div class="news">
         <?php
