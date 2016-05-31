@@ -15,6 +15,7 @@
   if(isset($_POST['vijest'])) {
     $vijestiFile = file_get_contents($openShiftFolder."vijesti.csv");
     $vijest = $_POST['vijest'];
+    $vijest = str_replace("\n", "<br />", $vijest);
     if(strpos($vijest, ',') !== FALSE) {
       $vijest = str_replace('"', '""', $vijest);
       $vijest = '"'.$vijest.'"';

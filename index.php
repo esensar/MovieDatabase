@@ -10,6 +10,7 @@
       $counter = 0;
       foreach ($newsFile as $news) {
         $nesto = str_getcsv($news);
+        if($nesto.length < 3) continue;
         $timesArray[$counter] = $nesto[0];
         $imagesArray[$counter] = $nesto[1];
         $newsArray[$counter] = $nesto[2];
