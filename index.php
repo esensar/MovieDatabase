@@ -32,7 +32,7 @@
         <img src="<?php echo (strlen($image)!=0)?$image:'no_image.png' ?>"/>
         <p>
           <time class='vrijeme' datetime="<?php echo $timeOfNews ?>"></time>
-          <?php print $newsContent ?>
+          <?php echo $newsContent ?>
         </p>
         </div>
         <?php
